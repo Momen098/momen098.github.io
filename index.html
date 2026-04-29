@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momen Khaled — Revenue & Business Operations Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+  :root {
+    --bg:#080B10;--surface:#0F1420;--surface-2:#161C2B;--surface-dark:#040608;
+    --ink:#EDF2F7;--ink-mid:#A0AEC0;--ink-sub:#718096;--ink-light:#4A5568;
+    --accent:#6366F1;--accent-hover:#818CF8;--accent-light:#1E2035;--accent-glow:rgba(99,102,241,.22);
+    --border:#1E2A3B;--border-dark:#2D3748;
+    --shadow-sm:0 1px 3px rgba(0,0,0,.4);
+    --shadow:0 4px 16px rgba(0,0,0,.35);
+    --shadow-lg:0 20px 48px rgba(0,0,0,.45);
+    --font-head:'Plus Jakarta Sans',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --radius:10px;--radius-sm:6px;--radius-lg:16px;--max-w:1120px;--nav-h:64px;
+  }
+  .nav{background:rgba(8,11,16,.92);border-bottom-color:var(--border);}
+  .badge--2{background:#052e16;color:#34D399;}
+  .badge--3{background:#1e1b4b;color:#A78BFA;}
+  .s-done{background:#052e16;color:#34D399;}
+  .s-prog{background:#1c1408;color:#FCD34D;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;font-size:16px;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  ul,ol{list-style:none;}
+  button{cursor:pointer;font-family:inherit;}
+  .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
+  .section{padding:7rem 0;}
+  .section--alt{background:var(--surface);}
+  .overline{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.85rem;}
+  h1{font-family:var(--font-head);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;color:var(--ink);}
+  h2{font-family:var(--font-head);font-size:clamp(1.75rem,3vw,2.4rem);font-weight:700;line-height:1.15;letter-spacing:-.015em;color:var(--ink);}
+  h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--ink);line-height:1.35;}
+  p{color:var(--ink-mid);line-height:1.7;}
+  strong{color:var(--ink);font-weight:600;}
+
+  /* LOADER */
+  .loader{position:fixed;inset:0;background:var(--surface-dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .55s ease,visibility .55s ease;}
+  .loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  .loader__logo{font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-.04em;}
+  .loader__logo span{color:var(--accent);}
+  .loader__track{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
+  .loader__fill{height:100%;background:var(--accent);border-radius:99px;animation:loadFill 1.3s cubic-bezier(.4,0,.2,1) forwards;}
+  @keyframes loadFill{from{width:0}to{width:100%}}
+  .loader__sub{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:var(--font-head);}
+
+  /* NAV */
+  .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(248,249,251,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:100;}
+  .nav__inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between;}
+  .nav__logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;letter-spacing:-.03em;color:var(--ink);}
+  .nav__logo span{color:var(--accent);}
+  .nav__links{display:flex;align-items:center;gap:1.75rem;}
+  .nav__links > a{font-size:.83rem;font-weight:500;color:var(--ink-mid);transition:color .18s;font-family:var(--font-head);}
+  .nav__links > a:hover{color:var(--ink);}
+  .nav__links .active-link{color:var(--accent)!important;}
+  .btn-nav-outline{font-family:var(--font-head);font-size:.78rem;font-weight:600;padding:.42rem 1rem;border-radius:6px;border:1.5px solid var(--border-dark);color:var(--ink-mid);background:transparent;transition:border-color .18s,color .18s;white-space:nowrap;display:inline-block;}
+  .btn-nav-outline:hover{border-color:var(--accent);color:var(--accent);}
+  .btn-nav-primary{font-family:var(--font-head);font-size:.78rem;font-weight:700;padding:.42rem 1.1rem;border-radius:6px;background:var(--accent);color:#fff;border:none;transition:background .18s,transform .15s;white-space:nowrap;display:inline-block;}
+  .btn-nav-primary:hover{background:var(--accent-hover);transform:translateY(-1px);}
+  .nav__hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+  .nav__hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s;}
+  .theme-btn{width:34px;height:34px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--ink-mid);transition:background .18s,color .18s,border-color .18s;flex-shrink:0;}
+  .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.6rem;border-radius:8px;font-family:var(--font-head);font-size:.88rem;font-weight:700;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .18s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn--primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px var(--accent-glow);}
+  .btn--primary:hover{background:var(--accent-hover);box-shadow:0 6px 20px var(--accent-glow);}
+  .btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border-dark);}
+  .btn--ghost:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+  .back-top{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;border-radius:8px;background:var(--accent);color:#fff;border:none;display:flex;align-items:center;justify-content:center;z-index:90;cursor:pointer;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;box-shadow:0 4px 16px var(--accent-glow);}
+  .back-top.visible{opacity:1;transform:translateY(0);}
+  .back-top:hover{background:var(--accent-hover);}
+
+  /* HERO */
+  .hero{padding-top:calc(var(--nav-h) + 5.5rem);padding-bottom:6rem;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.35;z-index:0;}
+  .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 0%,var(--accent-light) 0%,transparent 70%);z-index:0;}
+  .hero__inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .hero__status{display:inline-flex;align-items:center;gap:.55rem;padding:.35rem .9rem;border-radius:99px;background:var(--surface);border:1px solid var(--border);font-size:.75rem;font-weight:600;color:var(--ink-mid);font-family:var(--font-head);margin-bottom:1.5rem;box-shadow:var(--shadow-sm);}
+  .hero__status-dot{width:7px;height:7px;border-radius:50%;background:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,.2);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,.08)}}
+  .hero__eyebrow{font-family:var(--font-head);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.85rem;}
+  .hero h1{margin-bottom:1.5rem;}
+  .hero h1 .aw{color:var(--accent);}
+  .hero__sub{font-size:1rem;line-height:1.75;color:var(--ink-mid);max-width:46ch;margin-bottom:2.5rem;}
+  .hero__actions{display:flex;gap:.85rem;flex-wrap:wrap;}
+  .hero__panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;box-shadow:var(--shadow-lg);position:relative;}
+  .hero__panel::before{content:'';position:absolute;top:-1px;left:2rem;right:2rem;height:2px;background:linear-gradient(90deg,var(--accent),#818CF8);border-radius:99px;}
+  .hero__panel-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);font-family:var(--font-head);margin-bottom:1.25rem;}
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .kpi-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1rem;transition:border-color .2s;}
+  .kpi-card:hover{border-color:var(--accent);}
+  .kpi-card__num{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-.03em;margin-bottom:.3rem;}
+  .kpi-card__label{font-size:.75rem;color:var(--ink-sub);line-height:1.45;}
+  .hero__panel-note{font-size:.72rem;color:var(--ink-light);text-align:center;margin-top:1.1rem;font-family:var(--font-head);}
+
+  /* STACK BAND */
+  .stack-band{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.35rem 0;}
+  .stack-band__inner{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+  .stack-band__label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);font-family:var(--font-head);white-space:nowrap;padding-right:2rem;border-right:1px solid var(--border);}
+  .stack-pills{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;}
+  .stack-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:600;color:var(--ink-mid);font-family:var(--font-head);transition:border-color .18s,color .18s,background .18s;white-space:nowrap;}
+  .stack-pill:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+
+  /* SECTION HEADER */
+  .sec-header{margin-bottom:3.5rem;}
+  .sec-header h2{margin-top:.4rem;margin-bottom:.85rem;}
+  .sec-header p{max-width:58ch;font-size:.95rem;}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;}
+  .project-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--accent);}
+  .project-card__thumb{height:170px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .project-card__thumb::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 12px);}
+  .thumb--1{background:linear-gradient(135deg,#0F1729 0%,#1A2644 100%);}
+  .thumb--2{background:linear-gradient(135deg,#0A1A14 0%,#133025 100%);}
+  .thumb--3{background:linear-gradient(135deg,#150C28 0%,#261540 100%);}
+  .thumb-icon{font-size:3rem;position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));}
+  .thumb-accent{position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;border-radius:50%;opacity:.12;}
+  .ta1{background:var(--accent);}
+  .ta2{background:#10B981;}
+  .ta3{background:#8B5CF6;}
+  .project-card__body{padding:1.4rem;flex:1;display:flex;flex-direction:column;}
+  .project-card__cat{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.55rem;font-family:var(--font-head);}
+  .cat1{color:var(--accent);}
+  .cat2{color:#059669;}
+  .cat3{color:#7C3AED;}
+  .project-card__title{font-family:var(--font-head);font-size:1rem;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:.55rem;}
+  .project-card__desc{font-size:.85rem;color:var(--ink-mid);flex:1;margin-bottom:1.1rem;}
+  .project-card__badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+  .badge{font-size:.71rem;font-weight:700;padding:.22rem .65rem;border-radius:4px;font-family:var(--font-head);}
+  .badge--1{background:var(--accent-light);color:var(--accent);}
+  .badge--2{background:#052e16;color:#34D399;}
+  .badge--3{background:#1e1b4b;color:#A78BFA;}
+  .project-card__cta{font-size:.82rem;font-weight:700;color:var(--accent);font-family:var(--font-head);display:flex;align-items:center;gap:.35rem;transition:gap .2s;}
+  .project-card:hover .project-card__cta{gap:.6rem;}
+
+  /* CASE STUDY PANEL */
+  .overlay{position:fixed;inset:0;background:rgba(10,12,16,.6);backdrop-filter:blur(5px);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;}
+  .overlay.active{opacity:1;pointer-events:all;}
+  .cs-panel{position:fixed;top:0;right:0;bottom:0;width:min(800px,100vw);background:var(--surface);z-index:201;overflow-y:auto;transform:translateX(100%);transition:transform .42s cubic-bezier(.22,1,.36,1);box-shadow:-12px 0 60px rgba(0,0,0,.18);display:flex;flex-direction:column;}
+  .cs-panel.active{transform:translateX(0);}
+  .cs-panel__hero{padding:2.5rem 2.5rem 2rem;border-bottom:1px solid var(--border);position:relative;background:linear-gradient(135deg,var(--surface) 60%,var(--accent-light));}
+  .cs-close{position:absolute;top:1.5rem;right:1.5rem;width:34px;height:34px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-mid);transition:background .18s,color .18s;}
+  .cs-close:hover{background:var(--ink);color:#fff;}
+  .cs-share{position:absolute;top:1.5rem;right:4rem;width:34px;height:34px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink-mid);transition:background .18s,color .18s;}
+  .cs-share:hover{background:var(--accent-light);color:var(--accent);border-color:var(--accent);}
+  .cs-toast{position:absolute;top:1.5rem;right:5.2rem;background:var(--ink);color:#fff;font-size:.72rem;font-family:var(--font-head);font-weight:600;padding:.35rem .75rem;border-radius:6px;opacity:0;pointer-events:none;white-space:nowrap;transition:opacity .3s;}
+  .cs-toast.show{opacity:1;}
+  .cs-panel__body{padding:2.25rem 2.5rem;flex:1;}
+  .cs-block{margin-bottom:2.25rem;}
+  .cs-block-title{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-family:var(--font-head);margin-bottom:.85rem;display:flex;align-items:center;gap:.6rem;}
+  .cs-block-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .cs-block p{font-size:.92rem;line-height:1.75;}
+  .cs-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-top:.85rem;}
+  .cs-kpi{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;}
+  .cs-kpi__num{font-family:var(--font-head);font-size:1.7rem;font-weight:800;color:var(--accent);line-height:1;letter-spacing:-.02em;}
+  .cs-kpi__label{font-size:.73rem;color:var(--ink-sub);margin-top:.3rem;line-height:1.4;}
+  .pbi-wrap{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:.85rem;background:var(--surface-2);}
+  .pbi-bar{display:flex;align-items:center;gap:.5rem;padding:.65rem 1rem;border-bottom:1px solid var(--border);background:var(--surface-2);}
+  .pbi-dot{width:9px;height:9px;border-radius:50%;}
+  .pbi-label{font-size:.72rem;color:var(--ink-sub);margin-left:.4rem;font-family:var(--font-head);}
+  .pbi-frame{width:100%;aspect-ratio:16/9;border:none;display:block;}
+  .pbi-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;background:linear-gradient(135deg,#0F1729,#1A2644);}
+  .pbi-placeholder svg{width:44px;height:44px;color:var(--accent);}
+  .pbi-placeholder p{font-size:.82rem;text-align:center;max-width:26ch;color:rgba(255,255,255,.4);}
+  .pbi-placeholder code{font-size:.72rem;background:rgba(79,70,229,.25);color:#818CF8;padding:.2rem .5rem;border-radius:4px;}
+  .pbi-fs{display:block;text-align:right;font-size:.75rem;color:var(--accent);font-family:var(--font-head);font-weight:600;margin-top:.5rem;text-decoration:underline;text-underline-offset:2px;}
+  @media(max-width:768px){.pbi-frame{aspect-ratio:4/3;}.pbi-placeholder{aspect-ratio:4/3;}}
+  @media(max-width:480px){.pbi-frame{aspect-ratio:1/1;}.pbi-placeholder{aspect-ratio:1/1;}}
+  .cs-list{display:flex;flex-direction:column;gap:.6rem;margin-top:.5rem;}
+  .cs-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;color:var(--ink-mid);line-height:1.65;}
+  .cs-list li::before{content:'→';color:var(--accent);font-weight:700;flex-shrink:0;font-family:var(--font-head);}
+  .cs-impact{background:linear-gradient(135deg,var(--accent-light),rgba(99,102,241,.08));border:1px solid rgba(79,70,229,.2);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1.15rem 1.4rem;margin-top:.75rem;}
+  .cs-impact p{font-size:.9rem;color:var(--ink);line-height:1.75;}
+  .cs-impact strong{color:var(--accent);}
+
+  /* PROOF BAND */
+  .proof-band{background:var(--surface-dark);padding:4rem 0;}
+  .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+  .proof-num{font-family:var(--font-head);font-size:2.8rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em;margin-bottom:.35rem;}
+  .proof-num em{color:var(--accent);font-style:normal;}
+  .proof-lbl{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.55;font-family:var(--font-head);}
+
+  /* EXPERIENCE */
+  .exp-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start;}
+  .exp-left{position:sticky;top:calc(var(--nav-h) + 2rem);}
+  .tools-cloud{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.5rem;}
+  .tool-tag{font-size:.75rem;font-weight:600;padding:.3rem .8rem;border-radius:5px;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-mid);font-family:var(--font-head);transition:border-color .18s,color .18s;}
+  .tool-tag:hover{border-color:var(--accent);color:var(--accent);}
+  .timeline{position:relative;padding-left:1.75rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
+  .tl-item{position:relative;padding-bottom:2.5rem;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{position:absolute;left:-2.18rem;top:6px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);z-index:1;}
+  .tl-item--cur .tl-dot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-light);}
+  .tl-meta{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-bottom:.45rem;}
+  .tl-period{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light);font-family:var(--font-head);}
+  .tl-now{font-size:.68rem;font-weight:700;padding:.15rem .55rem;border-radius:99px;background:var(--accent-light);color:var(--accent);font-family:var(--font-head);}
+  .tl-role{font-family:var(--font-head);font-size:.98rem;font-weight:700;color:var(--ink);margin-bottom:.15rem;}
+  .tl-company{font-size:.85rem;color:var(--ink-sub);margin-bottom:.75rem;}
+  .tl-bullets{display:flex;flex-direction:column;gap:.45rem;}
+  .tl-bullet{font-size:.86rem;color:var(--ink-mid);display:flex;gap:.55rem;line-height:1.6;}
+  .tl-bullet::before{content:'·';color:var(--accent);font-weight:700;flex-shrink:0;}
+  .tl-result{display:inline-block;margin-top:.65rem;font-size:.73rem;font-weight:700;padding:.22rem .65rem;border-radius:4px;background:var(--accent-light);color:var(--accent);font-family:var(--font-head);}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .skill-group{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;}
+  .skill-group__head{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-family:var(--font-head);margin-bottom:1.4rem;}
+  .skill-item{margin-bottom:1.1rem;}
+  .skill-item:last-child{margin-bottom:0;}
+  .skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
+  .skill-name{font-size:.86rem;font-weight:600;color:var(--ink);font-family:var(--font-head);}
+  .skill-level{font-size:.72rem;color:var(--ink-light);font-family:var(--font-head);}
+  .skill-bar{height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+  .skill-fill{height:100%;background:var(--accent);border-radius:99px;transform:scaleX(0);transform-origin:left;transition:transform .85s cubic-bezier(.22,1,.36,1);}
+
+  /* PROCESS */
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative;}
+  .process-grid::before{content:'';position:absolute;top:28px;left:calc(12.5% + 1rem);right:calc(12.5% + 1rem);height:1px;background:linear-gradient(90deg,var(--accent) 0%,var(--border) 100%);z-index:0;}
+  .process-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem 1.25rem;position:relative;z-index:1;transition:transform .25s,box-shadow .25s,border-color .25s;}
+  .process-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent);}
+  .process-card__num{width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800;font-family:var(--font-head);margin-bottom:1rem;}
+  .process-card__title{font-family:var(--font-head);font-size:.93rem;font-weight:700;color:var(--ink);margin-bottom:.45rem;}
+  .process-card__desc{font-size:.82rem;color:var(--ink-mid);line-height:1.65;}
+
+  /* CERTS */
+  .certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+  .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;display:flex;gap:.9rem;align-items:flex-start;transition:border-color .2s,box-shadow .2s,transform .2s;}
+  .cert-card:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow);transform:translateY(-2px);}
+  .cert-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;}
+  .cert-name{font-family:var(--font-head);font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.15rem;line-height:1.35;}
+  .cert-issuer{font-size:.75rem;color:var(--ink-sub);margin-bottom:.5rem;}
+  .cert-status{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.04em;padding:.2rem .55rem;border-radius:99px;font-family:var(--font-head);}
+  .s-done{background:#052e16;color:#34D399;}
+  .s-prog{background:#1c1408;color:#FCD34D;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:5rem;align-items:start;}
+  .about-left{position:sticky;top:calc(var(--nav-h) + 2rem);}
+  .about-avatar{width:72px;height:72px;border-radius:12px;background:var(--accent-light);border:1.5px solid rgba(79,70,229,.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.6rem;font-weight:800;color:var(--accent);margin-bottom:1.4rem;}
+  .about-name{font-family:var(--font-head);font-size:1.55rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.3rem;}
+  .about-role{font-size:.85rem;color:var(--ink-sub);margin-bottom:1.5rem;font-family:var(--font-head);}
+  .about-stats{display:flex;flex-direction:column;gap:.85rem;}
+  .about-stat{display:flex;gap:.9rem;align-items:flex-start;}
+  .about-stat__num{font-family:var(--font-head);font-size:1.45rem;font-weight:800;color:var(--accent);line-height:1;min-width:2.8rem;letter-spacing:-.02em;}
+  .about-stat__lbl{font-size:.8rem;color:var(--ink-mid);line-height:1.5;}
+  .about-body p{font-size:.94rem;line-height:1.8;color:var(--ink-mid);margin-bottom:1.2rem;}
+  .about-body p:last-child{margin-bottom:0;}
+  .about-quote{background:var(--surface-2);border-left:3px solid var(--accent);padding:1.2rem 1.4rem;border-radius:0 var(--radius) var(--radius) 0;margin:2rem 0;}
+  .about-quote p{font-family:var(--font-head);font-size:1.02rem;font-style:italic;color:var(--ink)!important;margin:0;}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+  .contact-headline{margin-bottom:.85rem;}
+  .contact-headline em{color:var(--accent);font-style:normal;}
+  .contact-cta-text{font-size:.95rem;color:var(--ink-mid);line-height:1.75;margin-bottom:2rem;}
+  .contact-links{display:flex;flex-direction:column;gap:.85rem;}
+  .contact-link{display:flex;align-items:center;gap:1.1rem;padding:1.3rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);transition:border-color .2s,box-shadow .2s,transform .2s;}
+  .contact-link:hover{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-glow);transform:translateX(5px);}
+  .contact-link__icon{width:46px;height:46px;border-radius:10px;background:var(--accent-light);border:1px solid rgba(79,70,229,.2);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
+  .contact-link__label{font-family:var(--font-head);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-sub);display:block;margin-bottom:.2rem;}
+  .contact-link__value{font-family:var(--font-head);font-size:.97rem;font-weight:600;color:var(--ink);}
+  /* FOOTER */
+  .footer{background:var(--surface);border-top:1px solid var(--border);padding:2.25rem 0;}
+  .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+  .footer p{font-size:.78rem;color:var(--ink-light);}
+  .footer-links{display:flex;gap:1.5rem;}
+  .footer-links a{font-size:.78rem;color:var(--ink-light);transition:color .18s;font-family:var(--font-head);}
+  .footer-links a:hover{color:var(--accent);}
+
+  /* ANIMATIONS */
+  .fade-up{opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .hero__inner{grid-template-columns:1fr;}
+    .hero__panel{display:none;}
+    .projects-grid{grid-template-columns:1fr 1fr;}
+    .nav__links{display:none;}
+    .nav__links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--surface);padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1.25rem;z-index:99;}
+    .nav__hamburger{display:flex;}
+    .exp-grid{grid-template-columns:1fr;}
+    .exp-left{position:static;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-left{position:static;}
+    .contact-grid{grid-template-columns:1fr;gap:3rem;}
+  }
+  @media(max-width:700px){.skills-grid{grid-template-columns:1fr;}.proof-grid{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:1fr 1fr;}.process-grid{grid-template-columns:1fr 1fr;}.process-grid::before{display:none;}}
+  @media(max-width:580px){.projects-grid{grid-template-columns:1fr;}.hero__actions{flex-direction:column;}.section{padding:5rem 0;}.container{padding:0 1.25rem;}.cs-panel__body{padding:1.5rem;}.cs-panel__hero{padding:1.75rem 1.5rem 1.5rem;}.cs-kpis{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:1fr;}.process-grid{grid-template-columns:1fr;}.stack-band__inner{justify-content:flex-start;padding:0 1.25rem;}.stack-band__label{border-right:none;padding-right:0;}}
+  </style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader__logo">MK<span>.</span></div>
+  <div class="loader__track"><div class="loader__fill"></div></div>
+  <p class="loader__sub">Revenue &amp; Business Operations</p>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M3 8l5-5 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">Momen<span>.</span></a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#projects">Case Studies</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Credentials</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.6rem;">
+      <a href="#contact" class="btn-nav-primary">Let's Talk</a>
+      <div class="nav__hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero__inner">
+      <div>
+        <p class="hero__eyebrow">Revenue &amp; Business Operations</p>
+        <h1>Momen<br><span class="aw">Khaled</span></h1>
+        <p class="hero__sub">Bridging the gap between raw data and live operations. I architect scalable workflows, enforce internal controls, and build BI dashboards that eliminate bottlenecks and drive measurable revenue growth.</p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View Case Studies
+          </a>
+          <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero__panel">
+        <p class="hero__panel-label">Operational Impact — Instashop Platform</p>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-card__num">20%</div><div class="kpi-card__label">Reduction in delivery times across operational zones</div></div>
+          <div class="kpi-card"><div class="kpi-card__num">15%</div><div class="kpi-card__label">Reduction in preparation time — Spinneys account</div></div>
+          <div class="kpi-card"><div class="kpi-card__num">10%</div><div class="kpi-card__label">Increase in F&amp;V category order volume</div></div>
+          <div class="kpi-card"><div class="kpi-card__num">6+</div><div class="kpi-card__label">Years across B2B operations, logistics &amp; SaaS</div></div>
+        </div>
+        <p class="hero__panel-note">Results achieved at Instashop, Cairo · 2023–2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stack-band">
+  <div class="container stack-band__inner">
+    <span class="stack-band__label">Core Tech Stack</span>
+    <div class="stack-pills">
+      <span class="stack-pill">📊 Advanced Excel</span>
+      <span class="stack-pill">🗄️ SQL</span>
+      <span class="stack-pill">📈 Power BI</span>
+      <span class="stack-pill">🐍 Python</span>
+      <span class="stack-pill">🔁 HubSpot CRM</span>
+      <span class="stack-pill">⚡ n8n Automation</span>
+      <span class="stack-pill">🤖 Claude AI</span>
+      <span class="stack-pill">🔗 Make.com</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="sec-header fade-up">
+      <span class="overline">Case Studies</span>
+      <h2>Real Problems.<br>Measurable Outcomes.</h2>
+      <p>Each engagement follows a strict discipline: isolate the business problem, let the data lead, translate insight into operational action, and track the result.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up" style="animation-delay:.05s" onclick="openCase('p1')" role="button" tabindex="0">
+        <div class="project-card__thumb thumb--1"><div class="thumb-icon">📉</div><div class="thumb-accent ta1"></div></div>
+        <div class="project-card__body">
+          <p class="project-card__cat cat1">Order Operations Analysis</p>
+          <h3 class="project-card__title">Reducing Order Cancellations Using Data Analysis</h3>
+          <p class="project-card__desc">Identified root causes across 40+ stores by analyzing time-of-day patterns, prep time deviations, and store-level performance — isolating 3 stores responsible for 60% of cancellations.</p>
+          <div class="project-card__badges"><span class="badge badge--1">−34% cancellation rate</span><span class="badge badge--1">3 stores isolated</span></div>
+          <span class="project-card__cta">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+      <div class="project-card fade-up" style="animation-delay:.12s" onclick="openCase('p2')" role="button" tabindex="0">
+        <div class="project-card__thumb thumb--2"><div class="thumb-icon">📊</div><div class="thumb-accent ta2"></div></div>
+        <div class="project-card__body">
+          <p class="project-card__cat cat2">Performance Analytics</p>
+          <h3 class="project-card__title">Store Performance Dashboard &amp; Ranking System</h3>
+          <p class="project-card__desc">Built a unified performance ranking framework for 40+ merchant partners, giving management a single source of truth for SLA compliance, AOV, and fulfillment health.</p>
+          <div class="project-card__badges"><span class="badge badge--2">40+ stores ranked</span><span class="badge badge--2">Real-time KPIs</span></div>
+          <span class="project-card__cta">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+      <div class="project-card fade-up" style="animation-delay:.2s" onclick="openCase('p3')" role="button" tabindex="0">
+        <div class="project-card__thumb thumb--3"><div class="thumb-icon">⚙️</div><div class="thumb-accent ta3"></div></div>
+        <div class="project-card__body">
+          <p class="project-card__cat cat3">Process Optimization</p>
+          <h3 class="project-card__title">Preparation Time Optimization &amp; SLA Recovery</h3>
+          <p class="project-card__desc">Diagnosed systemic preparation delays, applied Pareto isolation to pinpoint the 20% of stores causing 80% of SLA breaches, and implemented targeted interventions.</p>
+          <div class="project-card__badges"><span class="badge badge--3">−15% avg prep time</span><span class="badge badge--3">SLA +12pp</span></div>
+          <span class="project-card__cta">View Case Study <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="proof-band">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="fade-up"><div class="proof-num">20<em>%</em></div><div class="proof-lbl">Delivery time reduction across all operational zones</div></div>
+      <div class="fade-up" style="animation-delay:.1s"><div class="proof-num">6<em>+</em></div><div class="proof-lbl">Years leading B2B operations across 4 companies</div></div>
+      <div class="fade-up" style="animation-delay:.2s"><div class="proof-num">40<em>+</em></div><div class="proof-lbl">Merchant partners optimized end-to-end</div></div>
+      <div class="fade-up" style="animation-delay:.3s"><div class="proof-num">90<em>%</em></div><div class="proof-lbl">Order confirmation rate maintained at Taager</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="section section--alt" id="experience">
+  <div class="container">
+    <div class="exp-grid">
+      <div class="exp-left fade-up">
+        <span class="overline">Career History</span>
+        <h2>Where I've Built,<br>Fixed &amp; Scaled</h2>
+        <p style="margin-top:.85rem;font-size:.9rem;">6 years of compounding operational judgment across e-commerce, logistics, B2B tech, and enterprise support.</p>
+        <div style="margin-top:2rem;">
+          <p style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);font-family:var(--font-head);margin-bottom:.85rem;">Tools &amp; Platforms</p>
+          <div class="tools-cloud">
+            <span class="tool-tag">Excel</span><span class="tool-tag">SQL</span><span class="tool-tag">Power BI</span><span class="tool-tag">HubSpot</span><span class="tool-tag">n8n</span><span class="tool-tag">Make.com</span><span class="tool-tag">Claude AI</span><span class="tool-tag">Python</span><span class="tool-tag">Notion</span><span class="tool-tag">DeepSeek</span>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="animation-delay:.15s">
+        <div class="timeline">
+          <div class="tl-item tl-item--cur">
+            <div class="tl-dot"></div>
+            <div class="tl-meta"><span class="tl-period">Jun 2024 — Present</span><span class="tl-now">Current</span></div>
+            <p class="tl-role">Operations Specialist</p>
+            <p class="tl-company">Instashop · Cairo, Egypt</p>
+            <div class="tl-bullets">
+              <p class="tl-bullet">Engineered a 20% reduction in restaurant delivery times by redesigning workflow sequences, rebalancing picker assignments, and deploying AI-assisted bottleneck analysis.</p>
+              <p class="tl-bullet">Owned the Spinneys Account end-to-end: directed Personal Shopper team through remote oversight and on-site escalation management, achieving 15% prep time reduction.</p>
+              <p class="tl-bullet">Drove 10% increase in F&amp;V category order volume through fulfillment gap analysis and merchant coordination.</p>
+              <p class="tl-bullet">Deployed Claude and DeepSeek to automate monitoring workflows and generate real-time operational improvement proposals.</p>
+            </div>
+            <span class="tl-result">+20% delivery efficiency · +10% order volume · −15% prep time</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-meta"><span class="tl-period">Jun 2023 — Jun 2024</span></div>
+            <p class="tl-role">Quality Assurance Specialist</p>
+            <p class="tl-company">Instashop · Cairo, Egypt</p>
+            <div class="tl-bullets">
+              <p class="tl-bullet">Owned full order lifecycle management for 40+ Merchant Partners, acting as primary operational advisor and SLA compliance enforcer.</p>
+              <p class="tl-bullet">Optimized Prep Time and Buffer Time configurations using data-driven analysis aligned to actual shop capacity.</p>
+              <p class="tl-bullet">Delivered AI-generated data-backed reports to the product team that directly influenced platform-level operational improvements.</p>
+            </div>
+            <span class="tl-result">Data-driven SLA management at scale</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-meta"><span class="tl-period">Nov 2021 — Jun 2023</span></div>
+            <p class="tl-role">Sales Associate — B2B Operations</p>
+            <p class="tl-company">Taager · Cairo, Egypt</p>
+            <div class="tl-bullets">
+              <p class="tl-bullet">Maintained a consistent 90% Order Confirmation Rate, protecting GMV through disciplined validation and fraud detection.</p>
+              <p class="tl-bullet">Developed a repeatable quality-checking methodology adopted team-wide as the standard SOP for order confirmation workflows.</p>
+            </div>
+            <span class="tl-result">90% confirmation rate · SOP author</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-meta"><span class="tl-period">May 2019 — Jan 2020</span></div>
+            <p class="tl-role">Customer Service Associate — SWAT Team</p>
+            <p class="tl-company">Amazon · Cairo, Egypt</p>
+            <div class="tl-bullets">
+              <p class="tl-bullet">Promoted to elite SWAT Team within 2 months, handling complex escalations across UAE, KSA, Kuwait, and Egypt.</p>
+              <p class="tl-bullet">Synthesized cross-geography complaint trends into structured management reports informing process improvement decisions.</p>
+            </div>
+            <span class="tl-result">Promoted in 2 months · Multi-market coverage</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-meta"><span class="tl-period">Jan 2018 — May 2019</span></div>
+            <p class="tl-role">Technical Support &amp; Subject Matter Expert</p>
+            <p class="tl-company">Vodafone · Cairo, Egypt</p>
+            <div class="tl-bullets">
+              <p class="tl-bullet">Led real-time technical coaching for Tier 1 and Tier 2 agents, building structured analytical frameworks that became internal SOPs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="sec-header fade-up">
+      <span class="overline">Capabilities</span>
+      <h2>Skills &amp; Technical Stack</h2>
+      <p>The combination of operational depth and analytical capability is rare. Most data analysts have never run a real operation. I have done both.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group fade-up">
+        <p class="skill-group__head">Operations &amp; RevOps</p>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Process Optimization &amp; SOPs</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-w=".96"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SLA Management &amp; KPI Tracking</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-w=".95"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Revenue Operations (RevOps)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-w=".82"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Root Cause Analysis</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-w=".88"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Vendor &amp; Merchant Management</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-w=".92"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Workflow Automation (n8n)</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-w=".65"></div></div></div>
+      </div>
+      <div class="skill-group fade-up" style="animation-delay:.12s">
+        <p class="skill-group__head">Data &amp; BI</p>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Microsoft Excel (Advanced)</span><span class="skill-level">Expert</span></div><div class="skill-bar"><div class="skill-fill" data-w=".96"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI &amp; Dashboard Design</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-w=".68"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL (Queries &amp; Analysis)</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-w=".64"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Python — pandas, openpyxl</span><span class="skill-level">Learning</span></div><div class="skill-bar"><div class="skill-fill" data-w=".42"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">HubSpot CRM</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" data-w=".72"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">AI Prompt Engineering</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" data-w=".85"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="sec-header fade-up" style="margin-bottom:3rem;">
+      <span class="overline">Methodology</span>
+      <h2>How I Approach Every Engagement</h2>
+      <p>The same four-step discipline applies whether I'm analyzing delivery SLAs or architecting a RevOps pipeline from scratch.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card fade-up"><div class="process-card__num">01</div><p class="process-card__title">Define the Business Problem</p><p class="process-card__desc">Before any data is pulled, I define the exact business question and what a decision-ready answer looks like. Scope prevents scope creep.</p></div>
+      <div class="process-card fade-up" style="animation-delay:.1s"><div class="process-card__num">02</div><p class="process-card__title">Collect &amp; Structure the Data</p><p class="process-card__desc">Pull from the right sources, resolve quality issues, and model the data correctly. Garbage in, garbage out — this step is non-negotiable.</p></div>
+      <div class="process-card fade-up" style="animation-delay:.2s"><div class="process-card__num">03</div><p class="process-card__title">Analyze &amp; Surface the Signal</p><p class="process-card__desc">Use SQL, Python, or Excel to segment, compare, and find the patterns that explain the problem — not just describe it.</p></div>
+      <div class="process-card fade-up" style="animation-delay:.3s"><div class="process-card__num">04</div><p class="process-card__title">Recommend &amp; Measure Impact</p><p class="process-card__desc">Translate insight into operational action with clear ownership, timeline, and a trackable metric. If it can't be measured, it didn't happen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="certifications">
+  <div class="container">
+    <div class="sec-header fade-up">
+      <span class="overline">Credentials</span>
+      <h2>Certifications &amp; Learning</h2>
+      <p>Every credential is paired with a real applied project. Badges without proof of application are not listed here.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fade-up"><div class="cert-icon" style="background:#EEF2FF;">📊</div><div><p class="cert-name">HubSpot CRM Fundamentals</p><p class="cert-issuer">HubSpot Academy</p><span class="cert-status s-done">✓ Completed</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon" style="background:#F0FDF4;">🔍</div><div><p class="cert-name">Google Data Analytics Certificate</p><p class="cert-issuer">Google · Coursera</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon" style="background:#FFFBEB;">⚡</div><div><p class="cert-name">n8n Automation Fundamentals</p><p class="cert-issuer">n8n.io Official</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon" style="background:#F5F3FF;">🐍</div><div><p class="cert-name">100 Days of Code — Python</p><p class="cert-issuer">Udemy · Angela Yu</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon" style="background:#EEF2FF;">📈</div><div><p class="cert-name">Excel — Advanced Analytics</p><p class="cert-issuer">Applied · Portfolio verified</p><span class="cert-status s-done">✓ Applied</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.24s"><div class="cert-icon" style="background:#F0FDF4;">🔗</div><div><p class="cert-name">AI Workflow Automation</p><p class="cert-issuer">Claude AI · Make.com · n8n</p><span class="cert-status s-done">✓ Applied in production</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left fade-up">
+        <div class="about-avatar">MK</div>
+        <p class="about-name">Momen Khaled</p>
+        <p class="about-role">Revenue &amp; Business Operations Professional</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="about-stat__num">6+</div><div class="about-stat__lbl">Years in B2B operations across e-commerce, logistics, and SaaS</div></div>
+          <div class="about-stat"><div class="about-stat__num">40+</div><div class="about-stat__lbl">Merchant partners managed and operationally optimized</div></div>
+          <div class="about-stat"><div class="about-stat__num">4</div><div class="about-stat__lbl">Companies where I shipped measurable operational results</div></div>
+        </div>
+      </div>
+      <div class="about-body fade-up" style="animation-delay:.15s">
+        <span class="overline">About Me</span>
+        <h2 style="margin-top:.4rem;margin-bottom:1.75rem;">Operational judgment.<br>Data-driven execution.</h2>
+        <p>I am a Business Operations Specialist with 6+ years of experience turning complex operational environments into measurable systems. My track record spans Instashop, Amazon, Taager, and Vodafone — four companies where I was responsible for outcomes, not just analysis.</p>
+        <div class="about-quote"><p>"Most operations leaders understand the business but can't read the data. Most analysts can read the data but have never run a real operation. I sit at that intersection — and that's where the highest-leverage decisions live."</p></div>
+        <p>At Instashop, I redesigned picker workflows, rebalanced team structures, and deployed AI-assisted monitoring to achieve a 20% reduction in delivery times — and a 15% reduction in preparation time on the Spinneys account. These results came from knowing which operational variables actually move the outcome, not from building dashboards in isolation.</p>
+        <p>I am currently building the technical layer — SQL, Power BI, Python, and n8n automation — on top of my operational foundation. My target: Revenue Operations and Strategic Operations roles at remote-first companies where operational depth and data fluency are both required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="sec-header fade-up">
+      <span class="overline">Contact</span>
+      <h2>Get In Touch</h2>
+      <p>Feel free to reach out through any of the channels below.</p>
+    </div>
+    <div class="contact-links fade-up" style="max-width:560px;">
+      <a href="mailto:momenkhaled609@gmail.com" class="contact-link">
+        <div class="contact-link__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5"/><path d="m2 6 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div><span class="contact-link__label">Email</span><span class="contact-link__value">momenkhaled609@gmail.com</span></div>
+      </a>
+      <a href="https://linkedin.com/in/momen-khaled-296573205/" target="_blank" rel="noopener" class="contact-link">
+        <div class="contact-link__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 9v5M6.5 6.5v.5M9.5 14V11c0-1.1.6-1.5 1.5-1.5s1.5.5 1.5 1.5v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div><span class="contact-link__label">LinkedIn</span><span class="contact-link__value">linkedin.com/in/momen-khaled-296573205</span></div>
+      </a>
+      <a href="tel:+201098320165" class="contact-link">
+        <div class="contact-link__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4h4l1.5 3.5-2 1.5c1 2 2.5 4 5 5l1.5-2L17.5 13V17C16 18.5 5 15 4 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="contact-link__label">Phone / WhatsApp</span><span class="contact-link__value">+20 109 832 0165</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© 2026 Momen Khaled — Revenue &amp; Business Operations Professional</p>
+    <div class="footer-links"><a href="#projects">Case Studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCase()"></div>
+<div class="cs-panel" id="csPanel">
+  <div class="cs-panel__hero">
+    <button class="cs-share" onclick="shareCase()" title="Copy shareable link"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="12" cy="3" r="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="13" r="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="3" cy="8" r="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M4.5 8.7L10.5 12M10.5 4L4.5 7.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
+    <div class="cs-toast" id="csToast">Link copied!</div>
+    <button class="cs-close" onclick="closeCase()" aria-label="Close"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <span class="overline" id="cs-cat" style="margin-bottom:.5rem;"></span>
+    <h2 id="cs-title" style="font-size:clamp(1.3rem,2.5vw,1.8rem);"></h2>
+  </div>
+  <div class="cs-panel__body" id="csBody"></div>
+</div>
+
+<script>
+const CS={
+  p1:{cat:"Order Operations · Case Study 01",title:"Reducing Order Cancellations Using Data Analysis",pbi_url:'',pbi_title:'Order Cancellation Analysis Dashboard',
+    overview:`This analysis was conducted across 40+ merchant partners on the Instashop platform after management flagged a rising order cancellation rate. The goal was to move beyond anecdotal explanations and identify the actual data-backed root causes — then design operational fixes that would hold.`,
+    problem:`The overall cancellation rate had climbed to an unacceptable level, but no unified view existed to explain why. Merchant partners blamed delivery drivers. Drivers blamed long prep times. Management had no single source of truth. Every cancelled order was lost revenue, a damaged customer relationship, and a downward signal to the platform algorithm.`,
+    kpis:[{num:"~23%",label:"Cancellation rate at peak window"},{num:"3",label:"Stores driving 60% of all cancellations"},{num:"40+",label:"Merchant partners in scope"}],
+    approach:`I pulled 90-day order-level data across all partner stores and analyzed four dimensions simultaneously: time-of-day clustering, store-level rate outliers, prep time correlation, and order category segmentation. SQL cross-joins and Excel pivot analysis were used to test each hypothesis and rank stores by cancellation impact.`,
+    insights:["60% of all cancellations originated from just 3 stores — the problem was concentrated, not systemic.","Peak cancellation window was 12:00–14:30 daily, correlating directly with understaffed peak hours at those specific stores.","Stores with prep times above 18 minutes showed a 3.4× higher cancellation rate vs. stores under 12 minutes.","Fruits & Vegetables orders had the highest cancellation rate due to inventory mismatches — stores accepting orders for out-of-stock items.","Two of the three problem stores had buffer time settings 40% below what their actual operational throughput required."],
+    impact:`After presenting findings and implementing targeted interventions — buffer time reconfiguration, dedicated peak-hour pickers at the three problem stores, and an inventory check step for F&V orders — the overall cancellation rate dropped approximately <strong>34%</strong> within 6 weeks. All three problem stores moved from bottom 5% to average cohort performance.`,
+    recs:["Reconfigure buffer times based on actual measured throughput, not default settings — static configs degrade over time.","Introduce a real-time cancellation alert for store managers when the 4-hour rate exceeds 15%.","Add a mandatory inventory confirmation step for high-cancellation categories before order acceptance.","Schedule dedicated picker support during the 12:00–14:30 window for all stores above 20 orders/hour."]},
+  p2:{cat:"Performance Analytics · Case Study 02",title:"Store Performance Dashboard & Ranking System",pbi_url:'',pbi_title:'Store Performance KPI Tracker',
+    overview:`With 40+ merchant partners operating simultaneously, management was making resource allocation decisions reactively — based on gut feel and isolated one-off reports. This project created a unified performance ranking framework giving operations leadership a real-time comparative view of every store's operational health.`,
+    problem:`No standardized ranking system existed. High-performing stores received the same support bandwidth as struggling ones. Resources were misallocated. There was no mechanism to detect early decline or accelerating improvement across the partner cohort.`,
+    kpis:[{num:"40+",label:"Stores with no unified performance view"},{num:"5+",label:"Separate data sources merged"},{num:"0",label:"Standardized ranking system previously"}],
+    approach:`I designed a composite performance score weighting four KPIs equally: average preparation time, SLA compliance rate, order cancellation rate, and AOV trend. Each store was ranked weekly within its cohort by category and volume tier. Built in Excel (Power Query + PivotTables) and documented as a replicable template for ongoing team use.`,
+    insights:["Top 10% of stores by composite score generated 38% of total GMV — protecting these partners became the highest-leverage operational focus.","12 stores in the bottom quartile had been there for 6+ consecutive weeks, indicating structural issues requiring intervention.","SLA compliance was the single strongest predictor of customer reorder rate across all tracked KPIs.","Supermarket-category stores consistently outperformed restaurant partners on prep time but underperformed on AOV.","Two low-scoring stores had the highest improvement velocity — early detection enabled proactive support."],
+    impact:`The dashboard became the operational standard for all weekly review meetings. Within one quarter, 30% of support hours were reallocated from mid-tier stores to the bottom quartile — resulting in measurable improvement across 8 of 12 bottom-quartile stores. Escalation meeting decision time dropped sharply due to immediate access to ranked data.`,
+    recs:["Implement a tiered support model: high-touch for bottom quartile, self-serve for top quartile — free up team bandwidth.","Add a velocity metric to surface improving stores early before they need reactive intervention.","Automate weekly ranking distribution directly to store managers — transparency drives performance.","Review composite score weighting quarterly to ensure it reflects current business priorities."]},
+  p3:{cat:"Process Optimization · Case Study 03",title:"Preparation Time Optimization & SLA Recovery",pbi_url:'',pbi_title:'Preparation Time & SLA Recovery Dashboard',
+    overview:`Preparation time was the single most direct lever controlling delivery speed and SLA compliance. This project was initiated after a 20% increase in average prep time was detected over a 30-day rolling window, threatening delivery ETA commitments across the platform.`,
+    problem:`Average preparation time had risen from 11 to 13+ minutes — a 20% degradation pushing delivery ETAs above customer tolerance. The aggregate number masked severe store-level variance. The challenge was identifying exactly where time was being lost and why.`,
+    kpis:[{num:"+20%",label:"Increase in avg prep time (30-day window)"},{num:"80%",label:"SLA breaches from 20% of stores (Pareto)"},{num:"13m",label:"Average vs. 11-minute target"}],
+    approach:`I segmented all stores by category, volume tier, and geography. For each segment, I analyzed prep time distributions (not just averages) to identify bimodal patterns. I ran a bottleneck correlation against shift change times, order volume surges, and picker count data.`,
+    insights:["20% of stores were responsible for 80% of SLA-breaching orders — Pareto held, enabling targeted rather than broad intervention.","Prep time spikes above 18 minutes clustered at 13:00–14:00 and 19:00–21:00 — directly coinciding with shift transition gaps.","Stores with a single picker showed 2.7× higher prep time variance than multi-picker stores during peak hours.","Buffer time settings were outdated at 67% of high-variance stores — configured months prior and never updated as volume grew.","The Spinneys account showed that remote oversight plus buffer reconfiguration produced the fastest measurable improvement."],
+    impact:`Targeted interventions on the top-20% problem stores produced a <strong>15% reduction in average preparation time within 8 weeks</strong>. SLA compliance across the platform improved by approximately <strong>12 percentage points</strong>. Delivery time consistency became measurably more predictable, directly reducing customer complaints related to late delivery.`,
+    recs:["Implement dynamic buffer times that adjust based on real-time order queue depth — not static monthly configs.","Establish a minimum picker count policy for stores exceeding 20 orders during any peak hour.","Run a monthly buffer time audit cycle across all partners — static settings degrade as volume grows.","Build a prep time escalation alert triggering when a store exceeds its 90th percentile threshold for 3 consecutive orders."]}
+};
+
+let currentId=null;
+function openCase(id){
+  const cs=CS[id];if(!cs)return;
+  currentId=id;
+  history.replaceState(null,'','#'+id);
+  document.getElementById('cs-cat').textContent=cs.cat;
+  document.getElementById('cs-title').textContent=cs.title;
+  const pbi=cs.pbi_url
+    ?`<iframe class="pbi-frame" src="${cs.pbi_url}" title="${cs.pbi_title}" allowfullscreen loading="lazy"></iframe>`
+    :`<div class="pbi-placeholder"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 30V22M24 30V18M32 30V24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><p>Power BI dashboard will appear here</p><code>Set pbi_url in CS['${id}']</code></div>`;
+  const fsLink=cs.pbi_url?`<a class="pbi-fs" href="${cs.pbi_url}" target="_blank" rel="noopener">🔍 Open Dashboard in Full Screen</a>`:'';
+  const kpis=cs.kpis.map(k=>`<div class="cs-kpi"><div class="cs-kpi__num">${k.num}</div><div class="cs-kpi__label">${k.label}</div></div>`).join('');
+  const ins=cs.insights.map(i=>`<li>${i}</li>`).join('');
+  const rec=cs.recs.map(r=>`<li>${r}</li>`).join('');
+  document.getElementById('csBody').innerHTML=`
+    <div class="cs-block"><p class="cs-block-title">Overview</p><p>${cs.overview}</p></div>
+    <div class="cs-block"><p class="cs-block-title">The Business Problem</p><p>${cs.problem}</p><div class="cs-kpis">${kpis}</div></div>
+    <div class="cs-block"><p class="cs-block-title">Data &amp; Approach</p><p>${cs.approach}</p></div>
+    <div class="cs-block"><p class="cs-block-title">Dashboard</p><div class="pbi-wrap"><div class="pbi-bar"><div class="pbi-dot" style="background:#FF5F57"></div><div class="pbi-dot" style="background:#FFBD2E"></div><div class="pbi-dot" style="background:#28C840"></div><span class="pbi-label">${cs.pbi_title}</span></div>${pbi}</div>${fsLink}</div>
+    <div class="cs-block"><p class="cs-block-title">Key Insights</p><ul class="cs-list">${ins}</ul></div>
+    <div class="cs-block"><p class="cs-block-title">Business Impact</p><div class="cs-impact"><p>${cs.impact}</p></div></div>
+    <div class="cs-block"><p class="cs-block-title">Recommendations</p><ul class="cs-list">${rec}</ul></div>`;
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('csPanel').classList.add('active');
+  document.getElementById('csPanel').scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+function closeCase(){
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('csPanel').classList.remove('active');
+  document.body.style.overflow='';
+  currentId=null;
+  history.replaceState(null,'',window.location.pathname+window.location.search);
+}
+function shareCase(){
+  if(!currentId)return;
+  const url=window.location.origin+window.location.pathname+'#'+currentId;
+  navigator.clipboard.writeText(url).then(()=>{
+    const t=document.getElementById('csToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);
+  });
+}
+window.addEventListener('load',()=>{
+  const hash=window.location.hash.replace('#','');
+  if(CS[hash])setTimeout(()=>openCase(hash),1500);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase();});
+document.querySelectorAll('.project-card').forEach(c=>{c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}});});
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+document.querySelectorAll('.nav__links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1350);});
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('visible',window.scrollY>450);},{passive:true});
+const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
+const barObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach((b,i)=>{b.style.transitionDelay=`${i*.07}s`;b.style.transform=`scaleX(${b.getAttribute('data-w')})`;});barObs.unobserve(e.target);}});},{threshold:0.2});
+document.querySelectorAll('.skill-group').forEach(g=>barObs.observe(g));
+const navAs=document.querySelectorAll('.nav__links a[href^="#"]');
+const secObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)navAs.forEach(a=>a.classList.toggle('active-link',a.getAttribute('href')==='#'+e.target.id));});},{threshold:0.4});
+document.querySelectorAll('section[id]').forEach(s=>secObs.observe(s));
+</script>
+</body>
+</html>
