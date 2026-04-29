@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="description" content="Portfolio of Momen Khaled, a Revenue & Business Operations Professional.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://YOUR_GITHUB_USERNAME.github.io/">
+<meta property="og:title" content="Momen Khaled — RevOps & Business Operations">
+<meta property="og:description" content="Bridging the gap between raw data and live operations. View my case studies on order optimization and SLA recovery.">
+<meta property="og:image" content="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/screenshot.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Momen Khaled — Revenue & Business Operations Professional</title>
@@ -303,9 +310,19 @@
   @media(max-width:580px){.projects-grid{grid-template-columns:1fr;}.hero__actions{flex-direction:column;}.section{padding:5rem 0;}.container{padding:0 1.25rem;}.cs-panel__body{padding:1.5rem;}.cs-panel__hero{padding:1.75rem 1.5rem 1.5rem;}.cs-kpis{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:1fr;}.process-grid{grid-template-columns:1fr;}.stack-band__inner{justify-content:flex-start;padding:0 1.25rem;}.stack-band__label{border-right:none;padding-right:0;}}
   </style>
 </head>
+  .noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 9999;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+}
 <body>
 
-<div class="loader" id="loader">
+<div class="noise-overlay"></div> <div class="loader" id="loader">
   <div class="loader__logo">MK<span>.</span></div>
   <div class="loader__track"><div class="loader__fill"></div></div>
   <p class="loader__sub">Revenue &amp; Business Operations</p>
@@ -326,7 +343,7 @@
       <li><a href="#about">About</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:.6rem;">
-      <a href="#contact" class="btn-nav-primary">Let's Talk</a>
+      <a href="#contact" class="btn-nav-primary"<a href="your-resume-link.pdf" target="_blank" class="btn-nav-outline">Resume</a>>Let's Talk</a>
       <div class="nav__hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -715,17 +732,18 @@ window.addEventListener('load',()=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase();});
 document.querySelectorAll('.project-card').forEach(c=>{c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}});});
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
-document.querySelectorAll('.nav__links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1350);});
-window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('visible',window.scrollY>450);},{passive:true});
-const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
-const barObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach((b,i)=>{b.style.transitionDelay=`${i*.07}s`;b.style.transform=`scaleX(${b.getAttribute('data-w')})`;});barObs.unobserve(e.target);}});},{threshold:0.2});
-document.querySelectorAll('.skill-group').forEach(g=>barObs.observe(g));
-const navAs=document.querySelectorAll('.nav__links a[href^="#"]');
-const secObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)navAs.forEach(a=>a.classList.toggle('active-link',a.getAttribute('href')==='#'+e.target.id));});},{threshold:0.4});
-document.querySelectorAll('section[id]').forEach(s=>secObs.observe(s));
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// This closes the menu if you click anywhere outside of it
+document.addEventListener('click', (e) => {
+  const nav = document.querySelector('.nav');
+  const navLinks = document.getElementById('navLinks');
+  if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
