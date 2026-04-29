@@ -658,92 +658,120 @@
 </div>
 
 <script>
+<script>
+// --- CASE STUDY DATA ---
 const CS={
   p1:{cat:"Order Operations · Case Study 01",title:"Reducing Order Cancellations Using Data Analysis",pbi_url:'',pbi_title:'Order Cancellation Analysis Dashboard',
-    overview:`This analysis was conducted across 40+ merchant partners on the Instashop platform after management flagged a rising order cancellation rate. The goal was to move beyond anecdotal explanations and identify the actual data-backed root causes — then design operational fixes that would hold.`,
-    problem:`The overall cancellation rate had climbed to an unacceptable level, but no unified view existed to explain why. Merchant partners blamed delivery drivers. Drivers blamed long prep times. Management had no single source of truth. Every cancelled order was lost revenue, a damaged customer relationship, and a downward signal to the platform algorithm.`,
+    overview:`This analysis was conducted across 40+ merchant partners on the Instashop platform...`,
+    problem:`The overall cancellation rate had climbed to an unacceptable level...`,
     kpis:[{num:"~23%",label:"Cancellation rate at peak window"},{num:"3",label:"Stores driving 60% of all cancellations"},{num:"40+",label:"Merchant partners in scope"}],
-    approach:`I pulled 90-day order-level data across all partner stores and analyzed four dimensions simultaneously: time-of-day clustering, store-level rate outliers, prep time correlation, and order category segmentation. SQL cross-joins and Excel pivot analysis were used to test each hypothesis and rank stores by cancellation impact.`,
-    insights:["60% of all cancellations originated from just 3 stores — the problem was concentrated, not systemic.","Peak cancellation window was 12:00–14:30 daily, correlating directly with understaffed peak hours at those specific stores.","Stores with prep times above 18 minutes showed a 3.4× higher cancellation rate vs. stores under 12 minutes.","Fruits & Vegetables orders had the highest cancellation rate due to inventory mismatches — stores accepting orders for out-of-stock items.","Two of the three problem stores had buffer time settings 40% below what their actual operational throughput required."],
-    impact:`After presenting findings and implementing targeted interventions — buffer time reconfiguration, dedicated peak-hour pickers at the three problem stores, and an inventory check step for F&V orders — the overall cancellation rate dropped approximately <strong>34%</strong> within 6 weeks. All three problem stores moved from bottom 5% to average cohort performance.`,
-    recs:["Reconfigure buffer times based on actual measured throughput, not default settings — static configs degrade over time.","Introduce a real-time cancellation alert for store managers when the 4-hour rate exceeds 15%.","Add a mandatory inventory confirmation step for high-cancellation categories before order acceptance.","Schedule dedicated picker support during the 12:00–14:30 window for all stores above 20 orders/hour."]},
+    approach:`I pulled 90-day order-level data across all partner stores...`,
+    insights:["60% of all cancellations originated from just 3 stores.","Peak window was 12:00–14:30 daily.","Stores with prep times >18 mins showed 3.4x higher cancellation.","F&V orders had highest inventory mismatches.","Buffer settings were 40% too low."],
+    impact:`Overall cancellation rate dropped approximately 34% within 6 weeks.`,
+    recs:["Dynamic buffer times.","Real-time alerts.","Inventory confirmation step.","Peak-hour picker support."]},
   p2:{cat:"Performance Analytics · Case Study 02",title:"Store Performance Dashboard & Ranking System",pbi_url:'',pbi_title:'Store Performance KPI Tracker',
-    overview:`With 40+ merchant partners operating simultaneously, management was making resource allocation decisions reactively — based on gut feel and isolated one-off reports. This project created a unified performance ranking framework giving operations leadership a real-time comparative view of every store's operational health.`,
-    problem:`No standardized ranking system existed. High-performing stores received the same support bandwidth as struggling ones. Resources were misallocated. There was no mechanism to detect early decline or accelerating improvement across the partner cohort.`,
-    kpis:[{num:"40+",label:"Stores with no unified performance view"},{num:"5+",label:"Separate data sources merged"},{num:"0",label:"Standardized ranking system previously"}],
-    approach:`I designed a composite performance score weighting four KPIs equally: average preparation time, SLA compliance rate, order cancellation rate, and AOV trend. Each store was ranked weekly within its cohort by category and volume tier. Built in Excel (Power Query + PivotTables) and documented as a replicable template for ongoing team use.`,
-    insights:["Top 10% of stores by composite score generated 38% of total GMV — protecting these partners became the highest-leverage operational focus.","12 stores in the bottom quartile had been there for 6+ consecutive weeks, indicating structural issues requiring intervention.","SLA compliance was the single strongest predictor of customer reorder rate across all tracked KPIs.","Supermarket-category stores consistently outperformed restaurant partners on prep time but underperformed on AOV.","Two low-scoring stores had the highest improvement velocity — early detection enabled proactive support."],
-    impact:`The dashboard became the operational standard for all weekly review meetings. Within one quarter, 30% of support hours were reallocated from mid-tier stores to the bottom quartile — resulting in measurable improvement across 8 of 12 bottom-quartile stores. Escalation meeting decision time dropped sharply due to immediate access to ranked data.`,
-    recs:["Implement a tiered support model: high-touch for bottom quartile, self-serve for top quartile — free up team bandwidth.","Add a velocity metric to surface improving stores early before they need reactive intervention.","Automate weekly ranking distribution directly to store managers — transparency drives performance.","Review composite score weighting quarterly to ensure it reflects current business priorities."]},
-  p3:{cat:"Process Optimization · Case Study 03",title:"Preparation Time Optimization & SLA Recovery",pbi_url:'',pbi_title:'Preparation Time & SLA Recovery Dashboard',
-    overview:`Preparation time was the single most direct lever controlling delivery speed and SLA compliance. This project was initiated after a 20% increase in average prep time was detected over a 30-day rolling window, threatening delivery ETA commitments across the platform.`,
-    problem:`Average preparation time had risen from 11 to 13+ minutes — a 20% degradation pushing delivery ETAs above customer tolerance. The aggregate number masked severe store-level variance. The challenge was identifying exactly where time was being lost and why.`,
-    kpis:[{num:"+20%",label:"Increase in avg prep time (30-day window)"},{num:"80%",label:"SLA breaches from 20% of stores (Pareto)"},{num:"13m",label:"Average vs. 11-minute target"}],
-    approach:`I segmented all stores by category, volume tier, and geography. For each segment, I analyzed prep time distributions (not just averages) to identify bimodal patterns. I ran a bottleneck correlation against shift change times, order volume surges, and picker count data.`,
-    insights:["20% of stores were responsible for 80% of SLA-breaching orders — Pareto held, enabling targeted rather than broad intervention.","Prep time spikes above 18 minutes clustered at 13:00–14:00 and 19:00–21:00 — directly coinciding with shift transition gaps.","Stores with a single picker showed 2.7× higher prep time variance than multi-picker stores during peak hours.","Buffer time settings were outdated at 67% of high-variance stores — configured months prior and never updated as volume grew.","The Spinneys account showed that remote oversight plus buffer reconfiguration produced the fastest measurable improvement."],
-    impact:`Targeted interventions on the top-20% problem stores produced a <strong>15% reduction in average preparation time within 8 weeks</strong>. SLA compliance across the platform improved by approximately <strong>12 percentage points</strong>. Delivery time consistency became measurably more predictable, directly reducing customer complaints related to late delivery.`,
-    recs:["Implement dynamic buffer times that adjust based on real-time order queue depth — not static monthly configs.","Establish a minimum picker count policy for stores exceeding 20 orders during any peak hour.","Run a monthly buffer time audit cycle across all partners — static settings degrade as volume grows.","Build a prep time escalation alert triggering when a store exceeds its 90th percentile threshold for 3 consecutive orders."]}
+    overview:`Created a unified performance ranking framework for operations leadership...`,
+    problem:`No standardized ranking system existed. Resources were misallocated.`,
+    kpis:[{num:"40+",label:"Stores ranked"},{num:"5+",label:"Data sources merged"},{num:"0",label:"Previous system"}],
+    approach:`Designed a composite score weighting four KPIs equally.`,
+    insights:["Top 10% generated 38% of GMV.","12 stores were bottom-tier for 6+ weeks.","SLA compliance predicted reorder rate.","Supermarkets outperformed on prep time.","Detected improvement velocity early."],
+    impact:`30% of support hours reallocated; improvement in 8 of 12 bottom stores.`,
+    recs:["Tiered support model.","Velocity metrics.","Automated weekly distribution.","Quarterly weighting review."]},
+  p3:{cat:"Process Optimization · Case Study 03",title:"Preparation Time Optimization & SLA Recovery",pbi_url:'',pbi_title:'Prep Time & SLA Recovery Dashboard',
+    overview:`Initiated after a 20% increase in average prep time was detected.`,
+    problem:`Avg prep time rose from 11 to 13+ mins, threatening delivery ETAs.`,
+    kpis:[{num:"+20%",label:"Prep time increase"},{num:"80%",label:"SLA breaches from 20% stores"},{num:"13m",label:"Avg vs. 11m target"}],
+    approach:`Segmented stores and analyzed prep time distributions for bimodal patterns.`,
+    insights:["Pareto held: 20% of stores caused 80% of breaches.","Spikes clustered during shift transitions.","Single-picker stores had high variance.","Buffer times were outdated at 67% of stores.","Remote oversight produced fast improvement."],
+    impact:`15% reduction in avg prep time; SLA compliance improved by 12pp.`,
+    recs:["Dynamic buffer times.","Minimum picker counts.","Monthly buffer audits.","Prep time threshold alerts."]}
 };
 
+// --- CORE FUNCTIONS ---
 let currentId=null;
+
 function openCase(id){
-  const cs=CS[id];if(!cs)return;
+  const cs=CS[id]; if(!cs)return;
   currentId=id;
   history.replaceState(null,'','#'+id);
   document.getElementById('cs-cat').textContent=cs.cat;
   document.getElementById('cs-title').textContent=cs.title;
-  const pbi=cs.pbi_url
-    ?`<iframe class="pbi-frame" src="${cs.pbi_url}" title="${cs.pbi_title}" allowfullscreen loading="lazy"></iframe>`
-    :`<div class="pbi-placeholder"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 30V22M24 30V18M32 30V24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><p>Power BI dashboard will appear here</p><code>Set pbi_url in CS['${id}']</code></div>`;
-  const fsLink=cs.pbi_url?`<a class="pbi-fs" href="${cs.pbi_url}" target="_blank" rel="noopener">🔍 Open Dashboard in Full Screen</a>`:'';
+  const pbi=cs.pbi_url 
+    ? `<iframe class="pbi-frame" src="${cs.pbi_url}" title="${cs.pbi_title}" allowfullscreen loading="lazy"></iframe>`
+    : `<div class="pbi-placeholder"><p>Dashboard Preview Available Upon Request</p></div>`;
+  
   const kpis=cs.kpis.map(k=>`<div class="cs-kpi"><div class="cs-kpi__num">${k.num}</div><div class="cs-kpi__label">${k.label}</div></div>`).join('');
   const ins=cs.insights.map(i=>`<li>${i}</li>`).join('');
   const rec=cs.recs.map(r=>`<li>${r}</li>`).join('');
+  
   document.getElementById('csBody').innerHTML=`
     <div class="cs-block"><p class="cs-block-title">Overview</p><p>${cs.overview}</p></div>
     <div class="cs-block"><p class="cs-block-title">The Business Problem</p><p>${cs.problem}</p><div class="cs-kpis">${kpis}</div></div>
-    <div class="cs-block"><p class="cs-block-title">Data &amp; Approach</p><p>${cs.approach}</p></div>
-    <div class="cs-block"><p class="cs-block-title">Dashboard</p><div class="pbi-wrap"><div class="pbi-bar"><div class="pbi-dot" style="background:#FF5F57"></div><div class="pbi-dot" style="background:#FFBD2E"></div><div class="pbi-dot" style="background:#28C840"></div><span class="pbi-label">${cs.pbi_title}</span></div>${pbi}</div>${fsLink}</div>
+    <div class="cs-block"><p class="cs-block-title">Data & Approach</p><p>${cs.approach}</p></div>
+    <div class="cs-block"><p class="cs-block-title">Dashboard</p><div class="pbi-wrap">${pbi}</div></div>
     <div class="cs-block"><p class="cs-block-title">Key Insights</p><ul class="cs-list">${ins}</ul></div>
     <div class="cs-block"><p class="cs-block-title">Business Impact</p><div class="cs-impact"><p>${cs.impact}</p></div></div>
     <div class="cs-block"><p class="cs-block-title">Recommendations</p><ul class="cs-list">${rec}</ul></div>`;
+  
   document.getElementById('overlay').classList.add('active');
   document.getElementById('csPanel').classList.add('active');
-  document.getElementById('csPanel').scrollTop=0;
   document.body.style.overflow='hidden';
 }
+
 function closeCase(){
   document.getElementById('overlay').classList.remove('active');
   document.getElementById('csPanel').classList.remove('active');
   document.body.style.overflow='';
   currentId=null;
-  history.replaceState(null,'',window.location.pathname+window.location.search);
+  history.replaceState(null,'',window.location.pathname);
 }
-function shareCase(){
-  if(!currentId)return;
-  const url=window.location.origin+window.location.pathname+'#'+currentId;
-  navigator.clipboard.writeText(url).then(()=>{
-    const t=document.getElementById('csToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);
-  });
-}
-window.addEventListener('load',()=>{
-  const hash=window.location.hash.replace('#','');
-  if(CS[hash])setTimeout(()=>openCase(hash),1500);
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase();});
-document.querySelectorAll('.project-card').forEach(c=>{c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}});});
-function toggleNav() {
+
+function toggleNav(){
   document.getElementById('navLinks').classList.toggle('open');
 }
 
-// This closes the menu if you click anywhere outside of it
+// --- INITIALIZATION ---
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hidden'), 1000);
+});
+
+// FAILSAFE: Hide loader after 4 seconds even if 'load' event fails
+setTimeout(() => {
+  const loader = document.getElementById('loader');
+  if (loader && !loader.classList.contains('hidden')) {
+    loader.classList.add('hidden');
+  }
+}, 4000);
+
+// Close menu when clicking outside
 document.addEventListener('click', (e) => {
   const nav = document.querySelector('.nav');
   const navLinks = document.getElementById('navLinks');
-  if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
+  if (navLinks && !nav.contains(e.target) && navLinks.classList.contains('open')) {
     navLinks.classList.remove('open');
   }
 });
+
+// Animations & Back to Top
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('visible',window.scrollY>450);
+},{passive:true});
+
+const fadeObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
+
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    e.target.querySelectorAll('.skill-fill').forEach((b,i)=>{
+      b.style.transform=`scaleX(${b.getAttribute('data-w')})`;
+    });
+    barObs.unobserve(e.target);
+  }});
+},{threshold:0.2});
+document.querySelectorAll('.skill-group').forEach(g=>barObs.observe(g));
+</script>
 </script>
 </body>
 </html>
