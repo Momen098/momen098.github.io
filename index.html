@@ -20,7 +20,6 @@
     --font-body:'Inter',system-ui,sans-serif;
     --radius:10px;--radius-sm:6px;--radius-lg:16px;--max-w:1120px;--nav-h:64px;
   }
-  .nav{background:rgba(8,11,16,.92);border-bottom-color:var(--border);}
   .badge--2{background:#052e16;color:#34D399;}
   .badge--3{background:#1e1b4b;color:#A78BFA;}
   .s-done{background:#052e16;color:#34D399;}
@@ -52,8 +51,14 @@
   @keyframes loadFill{from{width:0}to{width:100%}}
   .loader__sub{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:var(--font-head);}
 
-  /* NAV */
-  .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(248,249,251,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:100;}
+  /* NAV — dark theme, consistent with portfolio */
+  .nav{
+    position:fixed;top:0;left:0;right:0;height:var(--nav-h);
+    background:rgba(8,11,16,.92);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    z-index:100;
+  }
   .nav__inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between;}
   .nav__logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;letter-spacing:-.03em;color:var(--ink);}
   .nav__logo span{color:var(--accent);}
@@ -247,6 +252,12 @@
   .s-done{background:#052e16;color:#34D399;}
   .s-prog{background:#1c1408;color:#FCD34D;}
 
+  /* cert icon backgrounds adjusted to dark theme */
+  .cert-icon--indigo{background:rgba(99,102,241,.15);}
+  .cert-icon--green{background:rgba(16,185,129,.12);}
+  .cert-icon--amber{background:rgba(245,158,11,.12);}
+  .cert-icon--violet{background:rgba(139,92,246,.12);}
+
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:5rem;align-items:start;}
   .about-left{position:sticky;top:calc(var(--nav-h) + 2rem);}
@@ -273,6 +284,7 @@
   .contact-link__icon{width:46px;height:46px;border-radius:10px;background:var(--accent-light);border:1px solid rgba(79,70,229,.2);display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
   .contact-link__label{font-family:var(--font-head);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-sub);display:block;margin-bottom:.2rem;}
   .contact-link__value{font-family:var(--font-head);font-size:.97rem;font-weight:600;color:var(--ink);}
+
   /* FOOTER */
   .footer{background:var(--surface);border-top:1px solid var(--border);padding:2.25rem 0;}
   .footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
@@ -291,7 +303,14 @@
     .hero__panel{display:none;}
     .projects-grid{grid-template-columns:1fr 1fr;}
     .nav__links{display:none;}
-    .nav__links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--surface);padding:1.5rem 2rem;border-bottom:1px solid var(--border);gap:1.25rem;z-index:99;}
+    .nav__links.open{
+      display:flex;flex-direction:column;
+      position:fixed;top:var(--nav-h);left:0;right:0;
+      background:rgba(8,11,16,.97);
+      padding:1.5rem 2rem;
+      border-bottom:1px solid var(--border);
+      gap:1.25rem;z-index:99;
+    }
     .nav__hamburger{display:flex;}
     .exp-grid{grid-template-columns:1fr;}
     .exp-left{position:static;}
@@ -562,12 +581,12 @@
       <p>Every credential is paired with a real applied project. Badges without proof of application are not listed here.</p>
     </div>
     <div class="certs-grid">
-      <div class="cert-card fade-up"><div class="cert-icon" style="background:#EEF2FF;">📊</div><div><p class="cert-name">HubSpot CRM Fundamentals</p><p class="cert-issuer">HubSpot Academy</p><span class="cert-status s-done">✓ Completed</span></div></div>
-      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon" style="background:#F0FDF4;">🔍</div><div><p class="cert-name">Google Data Analytics Certificate</p><p class="cert-issuer">Google · Coursera</p><span class="cert-status s-prog">→ In Progress</span></div></div>
-      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon" style="background:#FFFBEB;">⚡</div><div><p class="cert-name">n8n Automation Fundamentals</p><p class="cert-issuer">n8n.io Official</p><span class="cert-status s-prog">→ In Progress</span></div></div>
-      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon" style="background:#F5F3FF;">🐍</div><div><p class="cert-name">100 Days of Code — Python</p><p class="cert-issuer">Udemy · Angela Yu</p><span class="cert-status s-prog">→ In Progress</span></div></div>
-      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon" style="background:#EEF2FF;">📈</div><div><p class="cert-name">Excel — Advanced Analytics</p><p class="cert-issuer">Applied · Portfolio verified</p><span class="cert-status s-done">✓ Applied</span></div></div>
-      <div class="cert-card fade-up" style="animation-delay:.24s"><div class="cert-icon" style="background:#F0FDF4;">🔗</div><div><p class="cert-name">AI Workflow Automation</p><p class="cert-issuer">Claude AI · Make.com · n8n</p><span class="cert-status s-done">✓ Applied in production</span></div></div>
+      <div class="cert-card fade-up"><div class="cert-icon cert-icon--indigo">📊</div><div><p class="cert-name">HubSpot CRM Fundamentals</p><p class="cert-issuer">HubSpot Academy</p><span class="cert-status s-done">✓ Completed</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon cert-icon--green">🔍</div><div><p class="cert-name">Google Data Analytics Certificate</p><p class="cert-issuer">Google · Coursera</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon cert-icon--amber">⚡</div><div><p class="cert-name">n8n Automation Fundamentals</p><p class="cert-issuer">n8n.io Official</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.08s"><div class="cert-icon cert-icon--violet">🐍</div><div><p class="cert-name">100 Days of Code — Python</p><p class="cert-issuer">Udemy · Angela Yu</p><span class="cert-status s-prog">→ In Progress</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.16s"><div class="cert-icon cert-icon--indigo">📈</div><div><p class="cert-name">Excel — Advanced Analytics</p><p class="cert-issuer">Applied · Portfolio verified</p><span class="cert-status s-done">✓ Applied</span></div></div>
+      <div class="cert-card fade-up" style="animation-delay:.24s"><div class="cert-icon cert-icon--green">🔗</div><div><p class="cert-name">AI Workflow Automation</p><p class="cert-issuer">Claude AI · Make.com · n8n</p><span class="cert-status s-done">✓ Applied in production</span></div></div>
     </div>
   </div>
 </section>
