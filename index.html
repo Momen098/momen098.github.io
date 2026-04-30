@@ -3,159 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Momen Khaled, a Revenue & Business Operations Professional.">
-  
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Momen Khaled — RevOps & Business Operations">
-  <meta property="og:description" content="Bridging the gap between raw data and live operations. View my case studies on order optimization and SLA recovery.">
-
   <title>Momen Khaled — Revenue & Business Operations Professional</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  
   <style>
-    :root {
-      --bg:#080B10;--surface:#0F1420;--surface-2:#161C2B;--surface-dark:#040608;
-      --ink:#EDF2F7;--ink-mid:#A0AEC0;--ink-sub:#718096;--ink-light:#4A5568;
-      --accent:#6366F1;--accent-hover:#818CF8;--accent-light:#1E2035;--accent-glow:rgba(99,102,241,.22);
-      --border:#1E2A3B;--border-dark:#2D3748;
-      --shadow-sm:0 1px 3px rgba(0,0,0,.4);
-      --shadow:0 4px 16px rgba(0,0,0,.35);
-      --shadow-lg:0 20px 48px rgba(0,0,0,.45);
-      --font-head:'Plus Jakarta Sans',system-ui,sans-serif;
-      --font-body:'Inter',system-ui,sans-serif;
-      --radius:10px;--radius-sm:6px;--radius-lg:16px;--max-w:1120px;--nav-h:64px;
-    }
-
-    .noise-overlay {
-      position: fixed; inset: 0; width: 100%; height: 100%;
-      pointer-events: none; opacity: 0.05; z-index: 9999;
-      background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-    }
-
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;font-size:16px;}
-    body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-    a{color:inherit;text-decoration:none;}
-    img{display:block;max-width:100%;}
-    ul,ol{list-style:none;}
-    button{cursor:pointer;font-family:inherit;}
-    .container{max-width:var(--max-w);margin:0 auto;padding:0 2rem;}
-    .section{padding:7rem 0;}
-    .section--alt{background:var(--surface);}
-    .overline{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.85rem;}
-    h1{font-family:var(--font-head);font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;color:var(--ink);}
-    h2{font-family:var(--font-head);font-size:clamp(1.75rem,3vw,2.4rem);font-weight:700;line-height:1.15;letter-spacing:-.015em;color:var(--ink);}
-    h3{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--ink);line-height:1.35;}
-    p{color:var(--ink-mid);line-height:1.7;}
-
-    /* LOADER */
-    .loader{position:fixed;inset:0;background:var(--surface-dark);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;transition:opacity .55s ease,visibility .55s ease;}
-    .loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
-    .loader__logo{font-family:var(--font-head);font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-.04em;}
-    .loader__logo span{color:var(--accent);}
-    .loader__track{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;}
-    .loader__fill{height:100%;background:var(--accent);border-radius:99px;animation:loadFill 1.3s cubic-bezier(.4,0,.2,1) forwards;}
-    @keyframes loadFill{from{width:0}to{width:100%}}
-    .loader__sub{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:var(--font-head);}
-
-    /* NAV */
-    .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(8,11,16,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:100;}
-    .nav__inner{max-width:var(--max-w);margin:0 auto;padding:0 2rem;height:100%;display:flex;align-items:center;justify-content:space-between;}
-    .nav__logo{font-family:var(--font-head);font-weight:800;font-size:1.1rem;letter-spacing:-.03em;color:var(--ink);}
-    .nav__logo span{color:var(--accent);}
-    .nav__links{display:flex;align-items:center;gap:1.75rem;}
-    .nav__links > a{font-size:.83rem;font-weight:500;color:var(--ink-mid);transition:color .18s;font-family:var(--font-head);}
-    .nav__links > a:hover, .nav__links .active-link{color:var(--accent);}
-    .nav__hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-    .nav__hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.3s;}
-    
-    .btn-nav-outline{font-family:var(--font-head);font-size:.78rem;font-weight:600;padding:.42rem 1rem;border-radius:6px;border:1.5px solid var(--border-dark);color:var(--ink-mid);transition:0.2s;}
-    .btn-nav-outline:hover{border-color:var(--accent);color:var(--accent);}
-    .btn-nav-primary{font-family:var(--font-head);font-size:.78rem;font-weight:700;padding:.42rem 1.1rem;border-radius:6px;background:var(--accent);color:#fff;transition:0.2s;}
-    .btn-nav-primary:hover{background:var(--accent-hover);transform:translateY(-1px);}
-
-    /* PROJECTS & CARDS */
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-    .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:0.25s;display:flex;flex-direction:column;}
-    .project-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--shadow-lg);}
-    .project-card__thumb{height:170px;position:relative;display:flex;align-items:center;justify-content:center;}
-    .thumb--1{background:linear-gradient(135deg,#0F1729,#1A2644);}
-    .thumb--2{background:linear-gradient(135deg,#0A1A14,#133025);}
-    .thumb--3{background:linear-gradient(135deg,#150C28,#261540);}
-    .project-card__body{padding:1.4rem;flex:1;}
-    .badge{font-size:.71rem;font-weight:700;padding:.22rem .65rem;border-radius:4px;background:var(--accent-light);color:var(--accent);margin-right:4px;}
-    
-    /* CASE STUDY PANEL */
-    .overlay{position:fixed;inset:0;background:rgba(10,12,16,.6);backdrop-filter:blur(5px);z-index:200;opacity:0;pointer-events:none;transition:0.3s;}
-    .overlay.active{opacity:1;pointer-events:all;}
-    .cs-panel{position:fixed;top:0;right:0;bottom:0;width:min(800px,100vw);background:var(--surface);z-index:201;overflow-y:auto;transform:translateX(100%);transition:0.4s cubic-bezier(.22,1,.36,1);}
-    .cs-panel.active{transform:translateX(0);}
-    .cs-panel__hero{padding:2.5rem;border-bottom:1px solid var(--border);position:relative;}
-    .cs-close{position:absolute;top:1.5rem;right:1.5rem;background:var(--surface-2);border:1px solid var(--border);color:var(--ink-mid);padding:8px;border-radius:6px;}
-
-    /* HELPERS */
-    .fade-up{opacity:0;transform:translateY(24px);transition:0.6s;}
-    .fade-up.visible{opacity:1;transform:translateY(0);}
-    
-    /* ADDED STYLES FROM YOUR PREVIOUS VERSION */
-    .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-    .kpi-card{background:var(--surface-2);border:1px solid var(--border);padding:1rem;border-radius:var(--radius);}
-    .kpi-card__num{font-size:2rem;font-weight:800;color:var(--accent);}
-    .stack-band{background:var(--surface);padding:1.5rem 0;border-y:1px solid var(--border);}
-    .stack-pills{display:flex;gap:0.5rem;flex-wrap:wrap;}
-    .stack-pill{padding:0.4rem 0.8rem;background:var(--surface-2);border-radius:6px;font-size:0.8rem;}
-    
-    /* TIMELINE */
-    .timeline{position:relative;padding-left:1.5rem;border-left:1px solid var(--border);}
-    .tl-item{margin-bottom:2.5rem;position:relative;}
-    .tl-dot{position:absolute;left:-1.85rem;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);}
-    
-    /* SKILLS */
-    .skill-group{background:var(--surface-2);padding:2rem;border-radius:var(--radius-lg);margin-bottom:1rem;}
-    .skill-bar{height:4px;background:var(--border);border-radius:99px;margin-top:8px;}
-    .skill-fill{height:100%;background:var(--accent);width:0;transition:1s cubic-bezier(.22,1,.36,1);transform-origin:left;}
-
-    @media(max-width:900px){
-      .nav__links{display:none;}
-      .nav__links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--surface);padding:2rem;gap:1.5rem;}
-      .nav__hamburger{display:flex;}
-      .hero__inner, .projects-grid, .exp-grid{grid-template-columns:1fr;}
-    }
-  </style>
-</head>
-<body>
-
-<div class="noise-overlay"></div>
-
-<div class="loader" id="loader">
-  <div class="loader__logo">MK<span>.</span></div>
-  <div class="loader__track"><div class="loader__fill"></div></div>
-  <p class="loader__sub">Revenue &amp; Business Operations</p>
-</div>
-
-<nav class="nav">
-  <div class="nav__inner">
-    <a href="#" class="nav__logo">Momen<span>.</span></a>
-    <ul class="nav__links" id="navLinks">
-      <li><a href="#projects">Case Studies</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:.6rem;">
-      <a href="your-resume-link.pdf" target="_blank" class="btn-nav-outline">Resume</a>
-      <a href="#contact" class="btn-nav-primary">Let's Talk</a>
-      <div class="nav__hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
-    </div>
-  </div>
-</nav>
-
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero__inner" style="display:grid;  body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  :root {
+    --bg:#080B10;--surface:#0F1420;--surface-2:#161C2B;--surface-dark:#040608;
+    --ink:#EDF2F7;--ink-mid:#A0AEC0;--ink-sub:#718096;--ink-light:#4A5568;
+    --accent:#6366F1;--accent-hover:#818CF8;--accent-light:#1E2035;--accent-glow:rgba(99,102,241,.22);
+    --border:#1E2A3B;--border-dark:#2D3748;
+    --shadow-sm:0 1px 3px rgba(0,0,0,.4);
+    --shadow:0 4px 16px rgba(0,0,0,.35);
+    --shadow-lg:0 20px 48px rgba(0,0,0,.45);
+    --font-head:'Plus Jakarta Sans',system-ui,sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --radius:10px;--radius-sm:6px;--radius-lg:16px;--max-w:1120px;--nav-h:64px;
+  }
+  .nav{background:rgba(8,11,16,.92);border-bottom-color:var(--border);}
+  .badge--2{background:#052e16;color:#34D399;}
+  .badge--3{background:#1e1b4b;color:#A78BFA;}
+  .s-done{background:#052e16;color:#34D399;}
+  .s-prog{background:#1c1408;color:#FCD34D;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;font-size:16px;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
   ul,ol{list-style:none;}
@@ -431,19 +303,9 @@
   @media(max-width:580px){.projects-grid{grid-template-columns:1fr;}.hero__actions{flex-direction:column;}.section{padding:5rem 0;}.container{padding:0 1.25rem;}.cs-panel__body{padding:1.5rem;}.cs-panel__hero{padding:1.75rem 1.5rem 1.5rem;}.cs-kpis{grid-template-columns:1fr 1fr;}.certs-grid{grid-template-columns:1fr;}.process-grid{grid-template-columns:1fr;}.stack-band__inner{justify-content:flex-start;padding:0 1.25rem;}.stack-band__label{border-right:none;padding-right:0;}}
   </style>
 </head>
-  .noise-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.05;
-  z-index: 9999;
-  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-}
 <body>
 
-<div class="noise-overlay"></div> <div class="loader" id="loader">
+<div class="loader" id="loader">
   <div class="loader__logo">MK<span>.</span></div>
   <div class="loader__track"><div class="loader__fill"></div></div>
   <p class="loader__sub">Revenue &amp; Business Operations</p>
@@ -464,7 +326,7 @@
       <li><a href="#about">About</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:.6rem;">
-      <a href="#contact" class="btn-nav-primary"<a href="your-resume-link.pdf" target="_blank" class="btn-nav-outline">Resume</a>>Let's Talk</a>
+      <a href="#contact" class="btn-nav-primary">Let's Talk</a>
       <div class="nav__hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -779,120 +641,91 @@
 </div>
 
 <script>
-<script>
-// --- CASE STUDY DATA ---
 const CS={
   p1:{cat:"Order Operations · Case Study 01",title:"Reducing Order Cancellations Using Data Analysis",pbi_url:'',pbi_title:'Order Cancellation Analysis Dashboard',
-    overview:`This analysis was conducted across 40+ merchant partners on the Instashop platform...`,
-    problem:`The overall cancellation rate had climbed to an unacceptable level...`,
+    overview:`This analysis was conducted across 40+ merchant partners on the Instashop platform after management flagged a rising order cancellation rate. The goal was to move beyond anecdotal explanations and identify the actual data-backed root causes — then design operational fixes that would hold.`,
+    problem:`The overall cancellation rate had climbed to an unacceptable level, but no unified view existed to explain why. Merchant partners blamed delivery drivers. Drivers blamed long prep times. Management had no single source of truth. Every cancelled order was lost revenue, a damaged customer relationship, and a downward signal to the platform algorithm.`,
     kpis:[{num:"~23%",label:"Cancellation rate at peak window"},{num:"3",label:"Stores driving 60% of all cancellations"},{num:"40+",label:"Merchant partners in scope"}],
-    approach:`I pulled 90-day order-level data across all partner stores...`,
-    insights:["60% of all cancellations originated from just 3 stores.","Peak window was 12:00–14:30 daily.","Stores with prep times >18 mins showed 3.4x higher cancellation.","F&V orders had highest inventory mismatches.","Buffer settings were 40% too low."],
-    impact:`Overall cancellation rate dropped approximately 34% within 6 weeks.`,
-    recs:["Dynamic buffer times.","Real-time alerts.","Inventory confirmation step.","Peak-hour picker support."]},
+    approach:`I pulled 90-day order-level data across all partner stores and analyzed four dimensions simultaneously: time-of-day clustering, store-level rate outliers, prep time correlation, and order category segmentation. SQL cross-joins and Excel pivot analysis were used to test each hypothesis and rank stores by cancellation impact.`,
+    insights:["60% of all cancellations originated from just 3 stores — the problem was concentrated, not systemic.","Peak cancellation window was 12:00–14:30 daily, correlating directly with understaffed peak hours at those specific stores.","Stores with prep times above 18 minutes showed a 3.4× higher cancellation rate vs. stores under 12 minutes.","Fruits & Vegetables orders had the highest cancellation rate due to inventory mismatches — stores accepting orders for out-of-stock items.","Two of the three problem stores had buffer time settings 40% below what their actual operational throughput required."],
+    impact:`After presenting findings and implementing targeted interventions — buffer time reconfiguration, dedicated peak-hour pickers at the three problem stores, and an inventory check step for F&V orders — the overall cancellation rate dropped approximately <strong>34%</strong> within 6 weeks. All three problem stores moved from bottom 5% to average cohort performance.`,
+    recs:["Reconfigure buffer times based on actual measured throughput, not default settings — static configs degrade over time.","Introduce a real-time cancellation alert for store managers when the 4-hour rate exceeds 15%.","Add a mandatory inventory confirmation step for high-cancellation categories before order acceptance.","Schedule dedicated picker support during the 12:00–14:30 window for all stores above 20 orders/hour."]},
   p2:{cat:"Performance Analytics · Case Study 02",title:"Store Performance Dashboard & Ranking System",pbi_url:'',pbi_title:'Store Performance KPI Tracker',
-    overview:`Created a unified performance ranking framework for operations leadership...`,
-    problem:`No standardized ranking system existed. Resources were misallocated.`,
-    kpis:[{num:"40+",label:"Stores ranked"},{num:"5+",label:"Data sources merged"},{num:"0",label:"Previous system"}],
-    approach:`Designed a composite score weighting four KPIs equally.`,
-    insights:["Top 10% generated 38% of GMV.","12 stores were bottom-tier for 6+ weeks.","SLA compliance predicted reorder rate.","Supermarkets outperformed on prep time.","Detected improvement velocity early."],
-    impact:`30% of support hours reallocated; improvement in 8 of 12 bottom stores.`,
-    recs:["Tiered support model.","Velocity metrics.","Automated weekly distribution.","Quarterly weighting review."]},
-  p3:{cat:"Process Optimization · Case Study 03",title:"Preparation Time Optimization & SLA Recovery",pbi_url:'',pbi_title:'Prep Time & SLA Recovery Dashboard',
-    overview:`Initiated after a 20% increase in average prep time was detected.`,
-    problem:`Avg prep time rose from 11 to 13+ mins, threatening delivery ETAs.`,
-    kpis:[{num:"+20%",label:"Prep time increase"},{num:"80%",label:"SLA breaches from 20% stores"},{num:"13m",label:"Avg vs. 11m target"}],
-    approach:`Segmented stores and analyzed prep time distributions for bimodal patterns.`,
-    insights:["Pareto held: 20% of stores caused 80% of breaches.","Spikes clustered during shift transitions.","Single-picker stores had high variance.","Buffer times were outdated at 67% of stores.","Remote oversight produced fast improvement."],
-    impact:`15% reduction in avg prep time; SLA compliance improved by 12pp.`,
-    recs:["Dynamic buffer times.","Minimum picker counts.","Monthly buffer audits.","Prep time threshold alerts."]}
+    overview:`With 40+ merchant partners operating simultaneously, management was making resource allocation decisions reactively — based on gut feel and isolated one-off reports. This project created a unified performance ranking framework giving operations leadership a real-time comparative view of every store's operational health.`,
+    problem:`No standardized ranking system existed. High-performing stores received the same support bandwidth as struggling ones. Resources were misallocated. There was no mechanism to detect early decline or accelerating improvement across the partner cohort.`,
+    kpis:[{num:"40+",label:"Stores with no unified performance view"},{num:"5+",label:"Separate data sources merged"},{num:"0",label:"Standardized ranking system previously"}],
+    approach:`I designed a composite performance score weighting four KPIs equally: average preparation time, SLA compliance rate, order cancellation rate, and AOV trend. Each store was ranked weekly within its cohort by category and volume tier. Built in Excel (Power Query + PivotTables) and documented as a replicable template for ongoing team use.`,
+    insights:["Top 10% of stores by composite score generated 38% of total GMV — protecting these partners became the highest-leverage operational focus.","12 stores in the bottom quartile had been there for 6+ consecutive weeks, indicating structural issues requiring intervention.","SLA compliance was the single strongest predictor of customer reorder rate across all tracked KPIs.","Supermarket-category stores consistently outperformed restaurant partners on prep time but underperformed on AOV.","Two low-scoring stores had the highest improvement velocity — early detection enabled proactive support."],
+    impact:`The dashboard became the operational standard for all weekly review meetings. Within one quarter, 30% of support hours were reallocated from mid-tier stores to the bottom quartile — resulting in measurable improvement across 8 of 12 bottom-quartile stores. Escalation meeting decision time dropped sharply due to immediate access to ranked data.`,
+    recs:["Implement a tiered support model: high-touch for bottom quartile, self-serve for top quartile — free up team bandwidth.","Add a velocity metric to surface improving stores early before they need reactive intervention.","Automate weekly ranking distribution directly to store managers — transparency drives performance.","Review composite score weighting quarterly to ensure it reflects current business priorities."]},
+  p3:{cat:"Process Optimization · Case Study 03",title:"Preparation Time Optimization & SLA Recovery",pbi_url:'',pbi_title:'Preparation Time & SLA Recovery Dashboard',
+    overview:`Preparation time was the single most direct lever controlling delivery speed and SLA compliance. This project was initiated after a 20% increase in average prep time was detected over a 30-day rolling window, threatening delivery ETA commitments across the platform.`,
+    problem:`Average preparation time had risen from 11 to 13+ minutes — a 20% degradation pushing delivery ETAs above customer tolerance. The aggregate number masked severe store-level variance. The challenge was identifying exactly where time was being lost and why.`,
+    kpis:[{num:"+20%",label:"Increase in avg prep time (30-day window)"},{num:"80%",label:"SLA breaches from 20% of stores (Pareto)"},{num:"13m",label:"Average vs. 11-minute target"}],
+    approach:`I segmented all stores by category, volume tier, and geography. For each segment, I analyzed prep time distributions (not just averages) to identify bimodal patterns. I ran a bottleneck correlation against shift change times, order volume surges, and picker count data.`,
+    insights:["20% of stores were responsible for 80% of SLA-breaching orders — Pareto held, enabling targeted rather than broad intervention.","Prep time spikes above 18 minutes clustered at 13:00–14:00 and 19:00–21:00 — directly coinciding with shift transition gaps.","Stores with a single picker showed 2.7× higher prep time variance than multi-picker stores during peak hours.","Buffer time settings were outdated at 67% of high-variance stores — configured months prior and never updated as volume grew.","The Spinneys account showed that remote oversight plus buffer reconfiguration produced the fastest measurable improvement."],
+    impact:`Targeted interventions on the top-20% problem stores produced a <strong>15% reduction in average preparation time within 8 weeks</strong>. SLA compliance across the platform improved by approximately <strong>12 percentage points</strong>. Delivery time consistency became measurably more predictable, directly reducing customer complaints related to late delivery.`,
+    recs:["Implement dynamic buffer times that adjust based on real-time order queue depth — not static monthly configs.","Establish a minimum picker count policy for stores exceeding 20 orders during any peak hour.","Run a monthly buffer time audit cycle across all partners — static settings degrade as volume grows.","Build a prep time escalation alert triggering when a store exceeds its 90th percentile threshold for 3 consecutive orders."]}
 };
 
-// --- CORE FUNCTIONS ---
 let currentId=null;
-
 function openCase(id){
-  const cs=CS[id]; if(!cs)return;
+  const cs=CS[id];if(!cs)return;
   currentId=id;
   history.replaceState(null,'','#'+id);
   document.getElementById('cs-cat').textContent=cs.cat;
   document.getElementById('cs-title').textContent=cs.title;
-  const pbi=cs.pbi_url 
-    ? `<iframe class="pbi-frame" src="${cs.pbi_url}" title="${cs.pbi_title}" allowfullscreen loading="lazy"></iframe>`
-    : `<div class="pbi-placeholder"><p>Dashboard Preview Available Upon Request</p></div>`;
-  
+  const pbi=cs.pbi_url
+    ?`<iframe class="pbi-frame" src="${cs.pbi_url}" title="${cs.pbi_title}" allowfullscreen loading="lazy"></iframe>`
+    :`<div class="pbi-placeholder"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 30V22M24 30V18M32 30V24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><p>Power BI dashboard will appear here</p><code>Set pbi_url in CS['${id}']</code></div>`;
+  const fsLink=cs.pbi_url?`<a class="pbi-fs" href="${cs.pbi_url}" target="_blank" rel="noopener">🔍 Open Dashboard in Full Screen</a>`:'';
   const kpis=cs.kpis.map(k=>`<div class="cs-kpi"><div class="cs-kpi__num">${k.num}</div><div class="cs-kpi__label">${k.label}</div></div>`).join('');
   const ins=cs.insights.map(i=>`<li>${i}</li>`).join('');
   const rec=cs.recs.map(r=>`<li>${r}</li>`).join('');
-  
   document.getElementById('csBody').innerHTML=`
     <div class="cs-block"><p class="cs-block-title">Overview</p><p>${cs.overview}</p></div>
     <div class="cs-block"><p class="cs-block-title">The Business Problem</p><p>${cs.problem}</p><div class="cs-kpis">${kpis}</div></div>
-    <div class="cs-block"><p class="cs-block-title">Data & Approach</p><p>${cs.approach}</p></div>
-    <div class="cs-block"><p class="cs-block-title">Dashboard</p><div class="pbi-wrap">${pbi}</div></div>
+    <div class="cs-block"><p class="cs-block-title">Data &amp; Approach</p><p>${cs.approach}</p></div>
+    <div class="cs-block"><p class="cs-block-title">Dashboard</p><div class="pbi-wrap"><div class="pbi-bar"><div class="pbi-dot" style="background:#FF5F57"></div><div class="pbi-dot" style="background:#FFBD2E"></div><div class="pbi-dot" style="background:#28C840"></div><span class="pbi-label">${cs.pbi_title}</span></div>${pbi}</div>${fsLink}</div>
     <div class="cs-block"><p class="cs-block-title">Key Insights</p><ul class="cs-list">${ins}</ul></div>
     <div class="cs-block"><p class="cs-block-title">Business Impact</p><div class="cs-impact"><p>${cs.impact}</p></div></div>
     <div class="cs-block"><p class="cs-block-title">Recommendations</p><ul class="cs-list">${rec}</ul></div>`;
-  
   document.getElementById('overlay').classList.add('active');
   document.getElementById('csPanel').classList.add('active');
+  document.getElementById('csPanel').scrollTop=0;
   document.body.style.overflow='hidden';
 }
-
 function closeCase(){
   document.getElementById('overlay').classList.remove('active');
   document.getElementById('csPanel').classList.remove('active');
   document.body.style.overflow='';
   currentId=null;
-  history.replaceState(null,'',window.location.pathname);
+  history.replaceState(null,'',window.location.pathname+window.location.search);
 }
-
-function toggleNav(){
-  document.getElementById('navLinks').classList.toggle('open');
+function shareCase(){
+  if(!currentId)return;
+  const url=window.location.origin+window.location.pathname+'#'+currentId;
+  navigator.clipboard.writeText(url).then(()=>{
+    const t=document.getElementById('csToast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);
+  });
 }
-
-// --- INITIALIZATION ---
 window.addEventListener('load',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('hidden'), 1000);
+  const hash=window.location.hash.replace('#','');
+  if(CS[hash])setTimeout(()=>openCase(hash),1500);
 });
-
-// FAILSAFE: Hide loader after 4 seconds even if 'load' event fails
-setTimeout(() => {
-  const loader = document.getElementById('loader');
-  if (loader && !loader.classList.contains('hidden')) {
-    loader.classList.add('hidden');
-  }
-}, 4000);
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  const nav = document.querySelector('.nav');
-  const navLinks = document.getElementById('navLinks');
-  if (navLinks && !nav.contains(e.target) && navLinks.classList.contains('open')) {
-    navLinks.classList.remove('open');
-  }
-});
-
-// Animations & Back to Top
-window.addEventListener('scroll',()=>{
-  document.getElementById('backTop').classList.toggle('visible',window.scrollY>450);
-},{passive:true});
-
-const fadeObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});
-},{threshold:0.1});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase();});
+document.querySelectorAll('.project-card').forEach(c=>{c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}});});
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+document.querySelectorAll('.nav__links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hidden'),1350);});
+window.addEventListener('scroll',()=>{document.getElementById('backTop').classList.toggle('visible',window.scrollY>450);},{passive:true});
+const fadeObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
-
-const barObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){
-    e.target.querySelectorAll('.skill-fill').forEach((b,i)=>{
-      b.style.transform=`scaleX(${b.getAttribute('data-w')})`;
-    });
-    barObs.unobserve(e.target);
-  }});
-},{threshold:0.2});
+const barObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach((b,i)=>{b.style.transitionDelay=`${i*.07}s`;b.style.transform=`scaleX(${b.getAttribute('data-w')})`;});barObs.unobserve(e.target);}});},{threshold:0.2});
 document.querySelectorAll('.skill-group').forEach(g=>barObs.observe(g));
-</script>
+const navAs=document.querySelectorAll('.nav__links a[href^="#"]');
+const secObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)navAs.forEach(a=>a.classList.toggle('active-link',a.getAttribute('href')==='#'+e.target.id));});},{threshold:0.4});
+document.querySelectorAll('section[id]').forEach(s=>secObs.observe(s));
 </script>
 </body>
 </html>
